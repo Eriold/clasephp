@@ -1,21 +1,25 @@
 <?php
 include('../model/Person.php');
+include('../controller/ConnectionController.php');
+include('../controller/ControllerPerson.php');
+
 $code = isset($_POST['txtCodigo']) && $_POST['txtCodigo'];
-$name = $_POST['txtNombre'];
-$phone = $_POST['txtTelefono'];
-$email = $_POST['txtEmail'];
-$address = $_POST['txtDireccion'];
-$button = $_POST['btn'];
+$name = isset($_POST['txtNombre']) && $_POST['txtNombre'];
+$phone = isset($_POST['txtTelefono']) && $_POST['txtTelefono'];
+$email = isset($_POST['txtEmail']) && $_POST['txtEmail'];
+$address = isset($_POST['txtDireccion']) && $_POST['txtDireccion'];
+// $button = isset($_POST['btn']) && $_POST['btn'];
 // $button = 'Guardar';
 
-switch ($button) {
-    case 'Guardar':
-        $objPerson = new Person('1', 'hugo', '411', 'hugo@', 'calle 13');
-        $objControllerPerson = new ControllerPerson($objPerson);
-        $objControllerPerson->save();
-        break;
-    default;
-}
+// switch ($button) {
+//     case 'Guardar':
+//         echo "Entró a guardar";
+//         $objPerson = new Person('1', 'hugosssss', '411', 'hugo@', 'calle 13');
+//         $objPersonCon = new ControllerPerson($objPerson);
+//         $objPersonCon->create();
+//         break;
+//     default;
+// }
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,7 +29,7 @@ switch ($button) {
 </head>
 
 <body>
-    <form action="VistaPersona.php" method="post">
+    <form action="PersonView.php" method="post">
         <table style="margin: 0 auto;">
             <tr>
                 <td colspan="2" style="text-align: center;">Datos Persona</td>
@@ -73,10 +77,10 @@ switch ($button) {
             <tr>
                 <td colspan="2" style="text-align: center;">
                     <input type="submit" name="btn" value="Guardar">
-                    <!-- <input type="submit" name="btn" value="Consultar">
+                    <input type="submit" name="btn" value="Consultar">
                     <input type="submit" name="btn" value="Modificar">
                     <input type="submit" name="btn" value="Borrar">
-                    <input type="submit" name="btn" value="Listar"> -->
+                    <input type="submit" name="btn" value="Listar">
                 </td>
             </tr>
         </table>

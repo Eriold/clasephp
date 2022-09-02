@@ -21,19 +21,11 @@ class Person
         $this->address = $Address;
     }
 
-    /**
-     * Get the value of Code
-     */
     public function getCode()
     {
-        return $this->Code;
+        return $this->code;
     }
 
-    /**
-     * Set the value of Code
-     *
-     * @return  self
-     */
     public function setCode($Code)
     {
         $this->Code = $Code;
@@ -41,19 +33,11 @@ class Person
         return $this;
     }
 
-    /**
-     * Get the value of Name
-     */
     public function getName()
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    /**
-     * Set the value of Name
-     *
-     * @return  self
-     */
     public function setName($Name)
     {
         $this->Name = $Name;
@@ -61,19 +45,11 @@ class Person
         return $this;
     }
 
-    /**
-     * Get the value of Phone
-     */
     public function getPhone()
     {
-        return $this->Phone;
+        return $this->phone;
     }
 
-    /**
-     * Set the value of Phone
-     *
-     * @return  self
-     */
     public function setPhone($Phone)
     {
         $this->Phone = $Phone;
@@ -81,19 +57,11 @@ class Person
         return $this;
     }
 
-    /**
-     * Get the value of Email
-     */
     public function getEmail()
     {
-        return $this->Email;
+        return $this->email;
     }
 
-    /**
-     * Set the value of Email
-     *
-     * @return  self
-     */
     public function setEmail($Email)
     {
         $this->Email = $Email;
@@ -101,19 +69,11 @@ class Person
         return $this;
     }
 
-    /**
-     * Get the value of Address
-     */
     public function getAddress()
     {
-        return $this->Address;
+        return $this->address;
     }
 
-    /**
-     * Set the value of Address
-     *
-     * @return  self
-     */
     public function setAddress($Address)
     {
         $this->Address = $Address;

@@ -1,23 +1,21 @@
 <?php
-include('../model/Person.php');
-include('./connectionController.php');
 class ControllerPerson
 {
-    var Person $objPerson;
+    var $objPerson;
 
     public function __construct(Person $objPerson)
     {
         $this->objPerson = $objPerson;
     }
 
-    public function save()
+    public function create()
     {
-        $cod = $this->objPerson->getCode();
-        $nam = $this->objPerson->getName();
-        $pho = $this->objPerson->getPhone();
-        $ema = $this->objPerson->getEmail();
-        $add = $this->objPerson->getAddress();
-        $sql = "intert into Person values ('" . $cod . "', '" . $nam . "','" . $pho . "','" . $ema . "','" . $add . "')";
+        $code = $this->objPerson->getCode();
+        $name = $this->objPerson->getName();
+        $phone = $this->objPerson->getPhone();
+        $email = $this->objPerson->getEmail();
+        $address = $this->objPerson->getAddress();
+        $sql = "INSERT INTO Persona VALUES ('$code','$name','$phone','$email','$address')";
         $objControllerPerson = new ConnectionController();
         $objControllerPerson->abrirBd("localhost", "root", "", "bdclients");
         $objControllerPerson->ejecutarComandoSql($sql);
