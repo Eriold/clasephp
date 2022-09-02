@@ -21,4 +21,14 @@ class ControllerPerson
         $objControllerPerson->ejecutarComandoSql($sql);
         $objControllerPerson->cerrarBd();
     }
+
+    public function getPeople()
+    {
+        $sql = "SELECT * FROM persona";
+        $objControllerPerson = new ConnectionController();
+        $objControllerPerson->abrirBd("localhost", "root", "", "bdclients");
+        $recordSet = $objControllerPerson->ejecutarSelect($sql);
+        $row = $recordSet->fetch_all(MYSQLI_ASSOC);
+        return $row;
+    }
 }

@@ -53,9 +53,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("location: ../index.php");
     }
 }
-include ('./components/head.php')
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<?php include('./components/head.php') ?>
 <body>
     <div class="wrapper">
         <div class="container-fluid">
