@@ -6,72 +6,50 @@ include('../controller/ControllerPerson.php');
 
 // Define variables and initialize with empty values
 $code = $name = $phoneNumber = $email = $address = '';
-$code_err = $name_err = $phoneNumber_err = $email_err = $address_err =  '';
-
-// Processing form data when form is submitted
-if (isset($_POST["id"]) && !empty($_POST["id"])) {
-    // Get hidden input value
-    $id = $_POST["id"];
-
-    // Validate name
-    $input_name = trim($_POST["name"]);
-    if (empty($input_name)) {
-        $name_err = "Please enter a name.";
-    } elseif (!filter_var($input_name, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z\s]+$/")))) {
-        $name_err = "Please enter a valid name.";
+$code_err = $name_err = $phoneNumber_err = $email_err = $address_err =  '';if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //Validate code
+    $inputCode = trim($_POST["txtCode"]);
+    if (empty($inputCode)) {
+        $code_err = "Debes ingresar un código.";
     } else {
-        $name = $input_name;
+        $code = $inputCode;
     }
-
-    // Validate address address
-    $input_address = trim($_POST["address"]);
-    if (empty($input_address)) {
-        $address_err = "Please enter an address.";
+    //Validate name
+    $inputName = trim($_POST["txtName"]);
+    if (empty($inputName)) {
+        $name_err = "Debes ingresar un nombre.";
     } else {
-        $address = $input_address;
+        $name = $inputName;
     }
-
-    // Validate salary
-    $input_salary = trim($_POST["salary"]);
-    if (empty($input_salary)) {
-        $salary_err = "Please enter the salary amount.";
-    } elseif (!ctype_digit($input_salary)) {
-        $salary_err = "Please enter a positive integer value.";
+    //Validate phone number
+    $inputPhoneNumber = trim($_POST["txtPhoneNumber"]);
+    if (empty($inputPhoneNumber)) {
+        $phoneNumber_err = "Debes ingresar un teléfono.";
     } else {
-        $salary = $input_salary;
+        $phoneNumber = $inputPhoneNumber;
+    }
+    //Validate email
+    $inputEmail = trim($_POST["txtEmail"]);
+    if (empty($inputEmail)) {
+        $email_err = "Debes ingresar un correo electrónico.";
+    } else {
+        $email = $inputEmail;
+    }
+    //Validate address
+    $inputAddress = trim($_POST["txtAddress"]);
+    if (empty($inputAddress)) {
+        $address_err = "Debes ingresar una dirección.";
+    } else {
+        $address = $inputAddress;
     }
 
     // Check input errors before inserting in database
-    if (empty($name_err) && empty($address_err) && empty($salary_err)) {
-        // Prepare an update statement
-        $sql = "UPDATE employees SET name=?, address=?, salary=? WHERE id=?";
-
-        if ($stmt = mysqli_prepare($link, $sql)) {
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssi", $param_name, $param_address, $param_salary, $param_id);
-
-            // Set parameters
-            $param_name = $name;
-            $param_address = $address;
-            $param_salary = $salary;
-            $param_id = $id;
-
-            // Attempt to execute the prepared statement
-            if (mysqli_stmt_execute($stmt)) {
-                // Records updated successfully. Redirect to landing page
-                header("location: ../index.php");
-                exit();
-            } else {
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-        }
-
-        // Close statement
-        mysqli_stmt_close($stmt);
+    if (empty($code_err) && empty($name_err) && empty($phoneNumber_err) && empty($email_err) && empty($address_err)) {
+        $objPerson = new Person($code, $name, $phoneNumber, $email, $address);
+        $objPersonCon = new ControllerPerson($objPerson);
+        $objPersonCon->create();
+        header("location: ../index.php");
     }
-
-    // Close connection
-    mysqli_close($link);
 } else {
     // Check existence of id parameter before processing further
     if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
