@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include('./view/components/head.php') ?>
+<?php include('./components/head.php') ?>
 
 <body>
     <div class="wrapper">
