@@ -42,4 +42,13 @@ class ControllerPerson
         $objControllerPerson->ejecutarComandoSql($sql);
         $objControllerPerson->cerrarBd();
     }
+    public function updatePerson() {
+        $code = $this->objPerson->getCode();
+        $sql = "SELECT FROM persona WHERE codigo='$code'";
+        echo "<h1>$code</h1>";
+        $objControllerPerson = new ConnectionController();
+        $objControllerPerson->abrirBd("localhost", "root", "", "bdclients");
+        $objControllerPerson->ejecutarComandoSql($sql);
+        $objControllerPerson->cerrarBd();
+    }
 }
