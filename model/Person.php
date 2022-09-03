@@ -28,7 +28,7 @@ class Person
 
     public function setCode($Code)
     {
-        $this->Code = $Code;
+        $this->code = $Code;
 
         return $this;
     }
@@ -40,7 +40,7 @@ class Person
 
     public function setName($Name)
     {
-        $this->Name = $Name;
+        $this->name = $Name;
 
         return $this;
     }
@@ -52,7 +52,7 @@ class Person
 
     public function setPhone($Phone)
     {
-        $this->Phone = $Phone;
+        $this->phone = $Phone;
 
         return $this;
     }
@@ -64,7 +64,7 @@ class Person
 
     public function setEmail($Email)
     {
-        $this->Email = $Email;
+        $this->email = $Email;
 
         return $this;
     }
@@ -76,7 +76,7 @@ class Person
 
     public function setAddress($Address)
     {
-        $this->Address = $Address;
+        $this->address = $Address;
 
         return $this;
     }
